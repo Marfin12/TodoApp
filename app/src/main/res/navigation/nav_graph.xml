@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/TodoFragment">
+
+    <fragment
+        android:id="@+id/TodoFragment"
+        android:name="com.example.todoapp.fragment.TodoFragment"
+        android:label="fragment_todo"
+        tools:layout="@layout/fragment_todo" >
+        <action
+            android:id="@+id/action_todoFragment_to_selectionFragment"
+            app:destination="@id/selectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectionFragment"
+        android:name="com.example.todoapp.fragment.SelectionFragment"
+        android:label="fragment_selection"
+        tools:layout="@layout/fragment_selection" >
+        <action
+            android:id="@+id/action_selectionFragment_to_submissionFragment"
+            app:destination="@id/submissionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/submissionFragment"
+        android:name="com.example.todoapp.fragment.SubmissionFragment"
+        android:label="fragment_submission"
+        tools:layout="@layout/fragment_submission" >
+        <action
+            android:id="@+id/action_submissionFragment_to_todoFragment"
+            app:destination="@id/TodoFragment"
+            app:popUpTo="@id/TodoFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="todo"
+            app:argType="com.example.todoapp.model.TodoList" />
+
+    </fragment>
+</navigation>

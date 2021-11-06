@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="selectionFragment"
+            type="com.example.todoapp.fragment.SelectionFragment" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        tools:context=".fragment.SelectionFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:clipToPadding="false"
+            android:horizontalSpacing="100dp"
+            android:paddingStart="16dp"
+            app:layoutManager="LinearLayoutManager"
+            android:paddingEnd="0dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="64dp" />
+
+        <EditText
+            android:id="@+id/todoEditText"
+            android:layout_width="320dp"
+            android:layout_height="68dp"
+            android:layout_marginTop="450dp"
+            android:padding="20dp"
+            android:layout_gravity="center_horizontal"
+            android:autofillHints="test"
+            android:background="@drawable/background"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginTop="550dp">
+
+            <Button
+                android:id="@+id/keepBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> selectionFragment.addTodoList()}"
+                android:text="Add" />
+
+            <Button
+                android:id="@+id/confirmBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm"
+                android:onClick="@{() -> selectionFragment.goToNextScreen()}"/>
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

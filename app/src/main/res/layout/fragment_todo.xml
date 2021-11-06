@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.TodoFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/todoRecyclerView"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:clipToPadding="false"
+            android:horizontalSpacing="100dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="0dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="64dp" />
+
+        <include
+            android:id="@+id/incTodoEmpty"
+            layout="@layout/fragment_todo_empty" />
+
+        <Button
+            android:id="@+id/button"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="640dp"
+            android:layout_marginStart="160dp"
+            android:text="Add Todo List" />
+
+    </FrameLayout>
+</layout>

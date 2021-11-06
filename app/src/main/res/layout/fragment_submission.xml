@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="submissionFragment"
+            type="com.example.todoapp.fragment.SubmissionFragment" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.SubmissionFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:clipToPadding="false"
+            android:horizontalSpacing="100dp"
+            android:paddingStart="16dp"
+            app:layoutManager="LinearLayoutManager"
+            android:paddingEnd="0dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="64dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="300dp">
+
+            <Button
+                android:id="@+id/keepBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{() -> submissionFragment.submit()}"
+                android:text="Add" />
+
+            <Button
+                android:id="@+id/confirmBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Confirm"
+                android:onClick="@{() -> submissionFragment.submit()}" />
+        </LinearLayout>
+    </FrameLayout>
+</layout>
