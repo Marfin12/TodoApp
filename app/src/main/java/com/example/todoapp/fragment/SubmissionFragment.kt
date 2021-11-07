@@ -6,17 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
+import com.example.todoapp.TodoApplication
 import com.example.todoapp.databinding.FragmentSubmissionBinding
 import com.example.todoapp.fragment.SubmissionFragmentArgs.Companion.fromBundle
+import com.example.todoapp.model.TodoListModel
 import com.example.todoapp.model.TodoModel
 
 class SubmissionFragment : Fragment() {
     private var _binding: FragmentSubmissionBinding? = null
 //
     private val binding get() = _binding!!
+
+    private val viewListModel: TodoListModel by activityViewModels {
+        TodoListModel.TodoListViewModelFactory(
+            (activity?.application as TodoApplication).database.todoDao()
+        )
+    }
 
     val todos by lazy {
         fromBundle(requireArguments()).todo
@@ -44,11 +53,18 @@ class SubmissionFragment : Fragment() {
         binding.recyclerView.adapter = viewModel.getSubmissionAdapter()
 
         binding.apply {
-            submissionFragment = this@SubmissionFragment
+            submiss = this@SubmissionFragment
         }
     }
 
     fun submit() {
+        println()
+//        viewListModel.submitItem(viewModel.getTodoList())
+//        val action = SubmissionFragmentDirections.actionSubmissionFragmentToTodoFragment()
+//        findNavController().navigate(action)
+    }
+
+    fun discard() {
         val action = SubmissionFragmentDirections.actionSubmissionFragmentToTodoFragment()
         findNavController().navigate(action)
     }
