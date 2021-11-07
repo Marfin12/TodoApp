@@ -1,17 +1,17 @@
 package com.example.todoapp.adapter
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
-import com.example.todoapp.model.Todo
-import com.example.todoapp.model.TodoList
+import com.example.todoapp.data.TodoData
 
-open class SubmissionAdapter(
-    private val dataset: ArrayList<Todo>
-): RecyclerView.Adapter<SubmissionAdapter.SubmissionViewHolder>() {
+open class TodoListAdapter(
+    private val dataset: List<TodoData>
+): RecyclerView.Adapter<TodoListAdapter.SubmissionViewHolder>() {
 
     /**
      * Create new views (invoked by the layout manager)
@@ -29,20 +29,24 @@ open class SubmissionAdapter(
      */
     override fun onBindViewHolder(holder: SubmissionViewHolder, position: Int) {
         val item = dataset[position]
-        holder.textView.text = item.todoItem
+        println("test")
+        println(item)
+        holder.textView.text = item.todoName
     }
 
     inner class SubmissionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView = itemView.findViewById(R.id.item_title)
-    }
+        val paintFlag = textView.paintFlags
 
-    fun addTodoItem(todo: Todo) {
-        dataset.add(todo)
-        notifyDataSetChanged()
-    }
+        init {
+            var isDefaultTodoStyle = true
 
-    fun getTodoList(): TodoList {
-        return TodoList(dataset)
+            itemView.setOnClickListener {
+                if (isDefaultTodoStyle) textView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                else textView.paintFlags = paintFlag
+                isDefaultTodoStyle = !isDefaultTodoStyle
+            }
+        }
     }
 
     /**

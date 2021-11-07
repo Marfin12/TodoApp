@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="submissionFragment"
+            name="submiss"
             type="com.example.todoapp.fragment.SubmissionFragment" />
     </data>
 
@@ -38,16 +38,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:onClick="@{() -> submissionFragment.submit()}"
-                android:text="Add" />
+                android:onClick="@{() -> submiss.discard()}"
+                android:text="Discard" />
 
             <Button
                 android:id="@+id/confirmBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Confirm"
-                android:onClick="@{() -> submissionFragment.submit()}" />
+                android:onClick="@{() -> submiss.submit()}"
+                android:text="Confirm" />
         </LinearLayout>
     </FrameLayout>
 </layout>

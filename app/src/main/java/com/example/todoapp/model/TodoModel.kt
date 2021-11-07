@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.todoapp.adapter.SubmissionAdapter
 import com.example.todoapp.adapter.TodoAdapter
 
-class TodoModel() : ViewModel() {
+class TodoModel : ViewModel() {
     private val _index = MutableLiveData(0)
     private val index: LiveData<Int>
         get() = _index
@@ -40,16 +40,8 @@ class TodoModel() : ViewModel() {
         return todoAdapter.getTodoList()
     }
 
-//    private fun getNewTodoEntry(todo: Todo): TodoData {
-//        return TodoData(
-//            todoName = todo.todoItem
-//        )
-//    }
-
-//    private fun submitTodoItem(todo: Todo) {
-//        viewModelScope.launch {
-//            todoDao.insert(getNewTodoEntry(todo))
-//        }
-//    }
+    fun getSubmissionTodoList(): TodoList {
+        return submissionAdapter.getTodoList()
+    }
     
 }
