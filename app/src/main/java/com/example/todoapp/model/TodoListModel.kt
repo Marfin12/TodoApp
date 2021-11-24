@@ -11,20 +11,25 @@ class TodoListModel(private val todoDAO: TodoDAO) : ViewModel() {
     val allTodoData: LiveData<List<TodoData>> = todoDAO.getTodoList().asLiveData()
     private var todoListAdapter: TodoListAdapter = TodoListAdapter(listOf())
 
-    fun submitItem(todos: TodoList) {
+    fun submitItem(todos: TodoList, action: () -> Unit) {
         viewModelScope.launch {
-            println("todos")
-            println(todos)
             todos.todoList.forEach { todo ->
-                todoDAO.insert(TodoData(todo.id, todo.todoItem))
+                todoDAO.insert(TodoData(todoName = todo.todoItem))
             }
         }
+        action()
     }
 
-    fun updateTodoList(todoDataList: List<TodoData>) {
-        println("gaa")
-        println(todoDataList)
+    fun updateTodoList(todoDataList: List<TodoData>, workerModel: TodoWorkerModel) {
         todoListAdapter = TodoListAdapter(todoDataList)
+        todoDataList.forEach {
+            todoListAdapter.onItemClick = {todoData, isStriked ->
+                println("clicked")
+                println(isStriked)
+                if (isStriked) workerModel.applyTodoChecked(todoData)
+                else workerModel.cancelWork(todoData)
+            }
+        }
     }
 
     fun getCurrentAdapter(): TodoListAdapter {

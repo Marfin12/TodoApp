@@ -58,9 +58,7 @@ class SubmissionFragment : Fragment() {
     }
 
     fun submit() {
-        viewListModel.submitItem(viewModel.getSubmissionTodoList())
-        val action = SubmissionFragmentDirections.actionSubmissionFragmentToTodoFragment()
-        findNavController().navigate(action)
+        viewListModel.submitItem(viewModel.getSubmissionTodoList()) { discard() }
     }
 
     fun discard() {
