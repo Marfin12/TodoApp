@@ -16,7 +16,8 @@ const val IMAGE_MANIPULATION_WORK_NAME = "image_manipulation_work"
 
 // Other keys
 const val OUTPUT_PATH = "blur_filter_outputs"
-const val KEY_IMAGE_TODO = "KEY_IMAGE_TODO"
+const val KEY_TODO_NAME = "KEY_TODO_NAME"
+const val KEY_TODO_ID = "KEY_TODO_ID"
 const val TAG_OUTPUT = "OUTPUT"
 
 const val FILE_NAME_TODO = "file_name_todo"

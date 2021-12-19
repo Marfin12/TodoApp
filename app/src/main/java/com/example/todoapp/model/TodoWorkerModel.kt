@@ -5,14 +5,17 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.work.*
 import com.example.todoapp.constants.IMAGE_MANIPULATION_WORK_NAME
-import com.example.todoapp.constants.KEY_IMAGE_TODO
+import com.example.todoapp.constants.KEY_TODO_ID
+import com.example.todoapp.constants.KEY_TODO_NAME
 import com.example.todoapp.constants.TAG_OUTPUT
+import com.example.todoapp.data.TodoData
 import com.example.todoapp.worker.CleanupWorker
+import com.example.todoapp.worker.RemoveTodoWorker
 import com.example.todoapp.worker.TodoWorker
 import java.util.concurrent.TimeUnit
 
 class TodoWorkerModel(application: Application) : AndroidViewModel(application) {
-    internal val outputWorkInfos: LiveData<List<WorkInfo>>
+    private val outputWorkInfos: LiveData<List<WorkInfo>>
     private val workManager = WorkManager.getInstance(application)
     private var continuation: WorkContinuation
 
@@ -32,9 +35,10 @@ class TodoWorkerModel(application: Application) : AndroidViewModel(application) 
      * Creates the input data bundle which includes the Uri to operate on
      * @return Data which contains the Image Uri as a String
      */
-    private fun createInputDataForUri(todoItem: String): Data {
+    private fun createInputDataForUri(todoId: Int, todoItem: String): Data {
         val builder = Data.Builder()
-        builder.putString(KEY_IMAGE_TODO, todoItem)
+        builder.putString(KEY_TODO_NAME, todoItem)
+        builder.putInt(KEY_TODO_ID, todoId)
 
         return builder.build()
     }
@@ -43,22 +47,29 @@ class TodoWorkerModel(application: Application) : AndroidViewModel(application) 
      * Create the WorkRequest to apply the blur and save the resulting image
      * @param blurLevel The amount to blur the image
      */
-    internal fun applyTodoChecked(todoItem: String) {
-        val str = "a"
+    internal fun applyTodoChecked(todoItem: TodoData) {
         val workerBuilder = OneTimeWorkRequestBuilder<TodoWorker>()
-            .addTag(todoItem)
+            .addTag(todoItem.todoName)
 
-        workerBuilder.setInputData(createInputDataForUri(todoItem))
+        workerBuilder.setInputData(createInputDataForUri(todoItem.id, todoItem.todoName))
         workerBuilder.setInitialDelay(5, TimeUnit.SECONDS)
 
         continuation = continuation.then(workerBuilder.build())
 
+        val deleteBuilder = OneTimeWorkRequestBuilder<RemoveTodoWorker>()
+            .addTag(todoItem.todoName)
+
+        deleteBuilder.setInputData(createInputDataForUri(todoItem.id, todoItem.todoName))
+        deleteBuilder.setInitialDelay(5, TimeUnit.SECONDS)
+
+        continuation = continuation.then(deleteBuilder.build())
             // Actually start the work
         continuation.enqueue()
     }
 
     internal fun cancelWork(todoItem: String) {
         workManager.cancelAllWorkByTag(todoItem)
+        workManager.cancelAllWorkByTag(TAG_OUTPUT)
     }
 
 }

@@ -59,6 +59,7 @@ class TodoFragment : Fragment() {
                 setExistTodoVisible(fragmentTodoBinding)
                 todoDataList = todoList
                 todoList.let {
+                    println(it)
                     viewListModel.updateTodoList(it, workerModel)
                 }
             }

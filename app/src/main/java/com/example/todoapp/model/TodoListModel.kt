@@ -20,6 +20,17 @@ class TodoListModel(private val todoDAO: TodoDAO) : ViewModel() {
         action()
     }
 
+    fun removeItem(todos: String) {
+        try {
+            viewModelScope.launch {
+                println(todos)
+                todoDAO.delete(TodoData(id = 1, todoName = todos))
+            }
+        } catch (exception: Exception) {
+            println(exception.toString())
+        }
+    }
+
     fun updateTodoList(todoDataList: List<TodoData>, workerModel: TodoWorkerModel) {
         todoListAdapter = TodoListAdapter(todoDataList)
         todoDataList.forEach {
@@ -27,7 +38,7 @@ class TodoListModel(private val todoDAO: TodoDAO) : ViewModel() {
                 println("clicked")
                 println(isStriked)
                 if (isStriked) workerModel.applyTodoChecked(todoData)
-                else workerModel.cancelWork(todoData)
+                else workerModel.cancelWork(todoData.todoName)
             }
         }
     }

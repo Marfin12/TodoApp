@@ -13,7 +13,7 @@ open class TodoListAdapter(
     private val dataset: List<TodoData>
 ): RecyclerView.Adapter<TodoListAdapter.SubmissionViewHolder>() {
 
-    var onItemClick: ((String, Boolean) -> Unit)? = null
+    var onItemClick: ((TodoData, Boolean) -> Unit)? = null
 
     /**
      * Create new views (invoked by the layout manager)
@@ -31,8 +31,6 @@ open class TodoListAdapter(
      */
     override fun onBindViewHolder(holder: SubmissionViewHolder, position: Int) {
         val item = dataset[position]
-        println("test")
-        println(item)
         holder.textView.text = item.todoName
     }
 
@@ -46,11 +44,11 @@ open class TodoListAdapter(
             itemView.setOnClickListener {
                 if (isDefaultTodoStyle) {
                     textView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                    onItemClick?.invoke(dataset[adapterPosition].todoName, true)
+                    onItemClick?.invoke(dataset[adapterPosition], true)
                 }
                 else {
                     textView.paintFlags = paintFlag
-                    onItemClick?.invoke(dataset[adapterPosition].todoName, false)
+                    onItemClick?.invoke(dataset[adapterPosition], false)
                 }
                 isDefaultTodoStyle = !isDefaultTodoStyle
             }
