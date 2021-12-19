@@ -1,4 +1,4 @@
-package com.example.todoapp.model
+package com.example.todoapp.model.data
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes

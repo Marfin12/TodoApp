@@ -1,4 +1,4 @@
-package com.example.todoapp.constants
+package com.example.todoapp.model.constants
 
 // Notification Channel constants
 

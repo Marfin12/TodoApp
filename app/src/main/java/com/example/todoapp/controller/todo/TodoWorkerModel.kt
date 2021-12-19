@@ -1,17 +1,17 @@
-package com.example.todoapp.model
+package com.example.todoapp.controller.todo
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.work.*
-import com.example.todoapp.constants.IMAGE_MANIPULATION_WORK_NAME
-import com.example.todoapp.constants.KEY_TODO_ID
-import com.example.todoapp.constants.KEY_TODO_NAME
-import com.example.todoapp.constants.TAG_OUTPUT
-import com.example.todoapp.data.TodoData
-import com.example.todoapp.worker.CleanupWorker
-import com.example.todoapp.worker.RemoveTodoWorker
-import com.example.todoapp.worker.TodoWorker
+import com.example.todoapp.controller.worker.CleanupWorker
+import com.example.todoapp.controller.worker.RemoveTodoWorker
+import com.example.todoapp.controller.worker.TodoWorker
+import com.example.todoapp.model.constants.IMAGE_MANIPULATION_WORK_NAME
+import com.example.todoapp.model.constants.KEY_TODO_ID
+import com.example.todoapp.model.constants.KEY_TODO_NAME
+import com.example.todoapp.model.constants.TAG_OUTPUT
+import com.example.todoapp.model.data.TodoData
 import java.util.concurrent.TimeUnit
 
 class TodoWorkerModel(application: Application) : AndroidViewModel(application) {

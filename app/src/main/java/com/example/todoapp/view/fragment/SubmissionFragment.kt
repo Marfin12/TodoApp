@@ -1,4 +1,4 @@
-package com.example.todoapp.fragment
+package com.example.todoapp.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,11 +10,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
-import com.example.todoapp.TodoApplication
+import com.example.todoapp.view.TodoApplication
 import com.example.todoapp.databinding.FragmentSubmissionBinding
-import com.example.todoapp.fragment.SubmissionFragmentArgs.Companion.fromBundle
-import com.example.todoapp.model.TodoListModel
-import com.example.todoapp.model.TodoModel
+import com.example.todoapp.view.fragment.SubmissionFragmentArgs.Companion.fromBundle
+import com.example.todoapp.controller.todo.TodoListModel
+import com.example.todoapp.controller.todo.TodoModel
 
 class SubmissionFragment : Fragment() {
     private var _binding: FragmentSubmissionBinding? = null

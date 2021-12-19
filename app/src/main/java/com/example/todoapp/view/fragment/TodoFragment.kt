@@ -1,4 +1,4 @@
-package com.example.todoapp.fragment
+package com.example.todoapp.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todoapp.R
-import com.example.todoapp.TodoApplication
-import com.example.todoapp.data.TodoData
+import com.example.todoapp.view.TodoApplication
+import com.example.todoapp.model.data.TodoData
 import com.example.todoapp.databinding.FragmentTodoBinding
 import com.example.todoapp.databinding.FragmentTodoEmptyBinding
-import com.example.todoapp.model.TodoListModel
-import com.example.todoapp.model.TodoWorkerModel
+import com.example.todoapp.controller.todo.TodoListModel
+import com.example.todoapp.controller.todo.TodoWorkerModel
 
 class TodoFragment : Fragment() {
     private var _fragmentTodoBinding: FragmentTodoBinding? = null

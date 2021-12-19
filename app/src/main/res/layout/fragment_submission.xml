@@ -6,13 +6,13 @@
     <data>
         <variable
             name="submiss"
-            type="com.example.todoapp.fragment.SubmissionFragment" />
+            type="com.example.todoapp.view.fragment.SubmissionFragment" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.SubmissionFragment">
+        tools:context=".view.fragment.SubmissionFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

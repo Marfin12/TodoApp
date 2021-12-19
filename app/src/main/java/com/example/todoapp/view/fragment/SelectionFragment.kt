@@ -1,4 +1,4 @@
-package com.example.todoapp.fragment
+package com.example.todoapp.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
 import com.example.todoapp.databinding.FragmentSelectionBinding
-import com.example.todoapp.model.TodoModel
+import com.example.todoapp.controller.todo.TodoModel
 
 class SelectionFragment : Fragment() {
     private var _binding: FragmentSelectionBinding? = null

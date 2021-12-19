@@ -1,4 +1,4 @@
-package com.example.todoapp.data
+package com.example.todoapp.model.data
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow

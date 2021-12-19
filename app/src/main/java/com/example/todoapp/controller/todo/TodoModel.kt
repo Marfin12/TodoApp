@@ -1,10 +1,12 @@
-package com.example.todoapp.model
+package com.example.todoapp.controller.todo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.todoapp.adapter.SubmissionAdapter
-import com.example.todoapp.adapter.TodoAdapter
+import com.example.todoapp.model.data.Todo
+import com.example.todoapp.model.data.TodoList
+import com.example.todoapp.view.adapter.SubmissionAdapter
+import com.example.todoapp.view.adapter.TodoAdapter
 
 class TodoModel : ViewModel() {
     private val _index = MutableLiveData(0)

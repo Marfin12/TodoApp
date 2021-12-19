@@ -1,4 +1,4 @@
-package com.example.todoapp.worker
+package com.example.todoapp.controller.worker
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,8 +10,8 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.todoapp.R
-import com.example.todoapp.constants.*
-import com.example.todoapp.fragment.TodoFragment
+import com.example.todoapp.model.constants.*
+import com.example.todoapp.view.fragment.TodoFragment
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream

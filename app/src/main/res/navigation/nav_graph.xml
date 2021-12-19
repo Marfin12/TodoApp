@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/TodoFragment"
-        android:name="com.example.todoapp.fragment.TodoFragment"
+        android:name="com.example.todoapp.view.fragment.TodoFragment"
         android:label="fragment_todo"
         tools:layout="@layout/fragment_todo" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectionFragment"
-        android:name="com.example.todoapp.fragment.SelectionFragment"
+        android:name="com.example.todoapp.view.fragment.SelectionFragment"
         android:label="fragment_selection"
         tools:layout="@layout/fragment_selection" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/submissionFragment"
-        android:name="com.example.todoapp.fragment.SubmissionFragment"
+        android:name="com.example.todoapp.view.fragment.SubmissionFragment"
         android:label="fragment_submission"
         tools:layout="@layout/fragment_submission" >
         <action
@@ -35,7 +35,6 @@
             app:popUpToInclusive="true"/>
         <argument
             android:name="todo"
-            app:argType="com.example.todoapp.model.TodoList" />
-
+            app:argType="com.example.todoapp.model.data.TodoList" />
     </fragment>
 </navigation>

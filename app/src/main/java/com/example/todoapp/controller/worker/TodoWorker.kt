@@ -1,12 +1,12 @@
-package com.example.todoapp.worker
+package com.example.todoapp.controller.worker
 
 import android.content.Context
 import android.content.Context.MODE_APPEND
 import android.text.TextUtils
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.example.todoapp.constants.FILE_NAME_TODO
-import com.example.todoapp.constants.KEY_TODO_NAME
+import com.example.todoapp.model.constants.FILE_NAME_TODO
+import com.example.todoapp.model.constants.KEY_TODO_NAME
 import java.io.FileOutputStream
 import java.io.IOException
 

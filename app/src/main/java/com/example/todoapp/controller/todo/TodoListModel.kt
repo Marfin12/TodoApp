@@ -1,9 +1,10 @@
-package com.example.todoapp.model
+package com.example.todoapp.controller.todo
 
 import androidx.lifecycle.*
-import com.example.todoapp.adapter.TodoListAdapter
-import com.example.todoapp.data.TodoDAO
-import com.example.todoapp.data.TodoData
+import com.example.todoapp.model.data.TodoDAO
+import com.example.todoapp.model.data.TodoData
+import com.example.todoapp.model.data.TodoList
+import com.example.todoapp.view.adapter.TodoListAdapter
 import kotlinx.coroutines.launch
 
 class TodoListModel(private val todoDAO: TodoDAO) : ViewModel() {

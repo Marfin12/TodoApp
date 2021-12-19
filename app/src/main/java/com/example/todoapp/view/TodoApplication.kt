@@ -1,7 +1,7 @@
-package com.example.todoapp
+package com.example.todoapp.view
 
 import android.app.Application
-import com.example.todoapp.data.TodoDatabase
+import com.example.todoapp.model.data.TodoDatabase
 
 class TodoApplication : Application() {
     // Using by lazy so the database and the repository are only created when they're needed

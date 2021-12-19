@@ -6,13 +6,13 @@
     <data>
         <variable
             name="todoEmptyFragment"
-            type="com.example.todoapp.fragment.TodoFragment" />
+            type="com.example.todoapp.view.fragment.TodoFragment" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.TodoFragment">
+        tools:context=".view.fragment.TodoFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/todoRecyclerView"

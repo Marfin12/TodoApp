@@ -6,14 +6,14 @@
     <data>
         <variable
             name="selectionFragment"
-            type="com.example.todoapp.fragment.SelectionFragment" />
+            type="com.example.todoapp.view.fragment.SelectionFragment" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        tools:context=".fragment.SelectionFragment">
+        tools:context=".view.fragment.SelectionFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

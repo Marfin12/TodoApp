@@ -1,4 +1,4 @@
-package com.example.todoapp.adapter
+package com.example.todoapp.view.adapter
 
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
-import com.example.todoapp.data.TodoData
+import com.example.todoapp.model.data.TodoData
 
 open class TodoListAdapter(
     private val dataset: List<TodoData>
