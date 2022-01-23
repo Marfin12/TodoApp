@@ -68,7 +68,6 @@ class UtilsUnitTest {
 
     @Test
     fun test_notification() {
-        every { Log.d(any(), any()) } returns 0
         every { NotificationManagerCompat.from(mockContext) } returns mockNotificationManagerCompat
         every { PendingIntent.getActivity(mockContext, any(), mockIntent, any()) } returns mockPendingIntent
         setFinalStatic(VERSION::class.java.getField("SDK_INT"), 29)

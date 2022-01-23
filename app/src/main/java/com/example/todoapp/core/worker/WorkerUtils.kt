@@ -81,9 +81,9 @@ fun makeStatusNotification(message: String, context: Context) {
 
 fun sleep() {
     try {
-        Thread.sleep(3000, 0)
+        Thread.sleep(DELAY_TIME_MILLIS, 0)
     } catch (e: InterruptedException) {
-        println(e)
+        Log.e(TAG_WORKER_UTILS, e.message!!)
     }
 }
 

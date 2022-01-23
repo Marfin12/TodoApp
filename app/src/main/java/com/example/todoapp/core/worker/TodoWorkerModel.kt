@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.work.*
-import com.example.todoapp.core.constants.IMAGE_MANIPULATION_WORK_NAME
+import com.example.todoapp.core.constants.TODO_MANIPULATION_WORK_NAME
 import com.example.todoapp.core.constants.KEY_TODO_ID
 import com.example.todoapp.core.constants.KEY_TODO_NAME
 import com.example.todoapp.core.constants.TAG_OUTPUT
@@ -22,7 +22,7 @@ class TodoWorkerModel(application: Application) : AndroidViewModel(application) 
         outputWorkInfos = workManager.getWorkInfosByTagLiveData(TAG_OUTPUT)
         continuation = workManager
             .beginUniqueWork(
-                IMAGE_MANIPULATION_WORK_NAME,
+                TODO_MANIPULATION_WORK_NAME,
                 ExistingWorkPolicy.REPLACE,
                 OneTimeWorkRequest.from(CleanupWorker::class.java)
             )

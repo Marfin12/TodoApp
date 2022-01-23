@@ -1,8 +1,11 @@
 package com.example.todoapp.core.worker
 
 import android.content.Context
+import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import com.example.todoapp.core.constants.TAG_CLEAN_UP_WORKER
+import com.example.todoapp.core.constants.TAG_TODO_WORKER
 
 class CleanupWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
     override fun doWork(): Result {
@@ -16,13 +19,13 @@ class CleanupWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params
                     val name = entry.name
                     if (name.isNotEmpty()) {
                         val deleted = entry.delete()
-                        println("Deleted $name - $deleted")
+                        Log.d(TAG_CLEAN_UP_WORKER,"Deleted $name - $deleted")
                     }
                 }
             }
             Result.success()
         } catch (exception: Exception) {
-            println(exception)
+            Log.e(TAG_TODO_WORKER, exception.message!!)
             Result.failure()
         }
     }

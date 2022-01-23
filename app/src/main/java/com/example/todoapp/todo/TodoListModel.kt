@@ -13,8 +13,6 @@ class TodoListModel(private val todoDAO: TodoDAO) : ViewModel() {
         todoListAdapter = TodoListAdapter(todoEntityList)
         todoEntityList.forEach {
             todoListAdapter.onItemClick = {todoData, isStriked ->
-                println("clicked")
-                println(isStriked)
                 if (isStriked) workerModel.applyTodoChecked(todoData)
                 else workerModel.cancelWork(todoData.todoName)
             }

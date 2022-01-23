@@ -2,11 +2,13 @@ package com.example.todoapp.core.worker
 
 import android.content.Context
 import android.content.Context.MODE_APPEND
+import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.example.todoapp.core.constants.FILE_NAME_TODO
 import com.example.todoapp.core.constants.KEY_TODO_ID
 import com.example.todoapp.core.constants.KEY_TODO_NAME
+import com.example.todoapp.core.constants.TAG_REMOVE_TODO_WORKER
 import com.example.todoapp.core.data.source.entity.TodoEntity
 import com.example.todoapp.core.data.source.room.TodoDatabase
 import java.io.FileOutputStream
@@ -35,12 +37,13 @@ class RemoveTodoWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker
 
             Result.success()
         } catch (throwable: Throwable) {
-            println(throwable)
+            Log.e(TAG_REMOVE_TODO_WORKER, throwable.message!!)
             Result.failure()
         } finally {
             try {
                 fos.close()
             } catch (e: IOException) {
+                Log.e(TAG_REMOVE_TODO_WORKER, e.message!!)
                 e.printStackTrace()
             }
         }
