@@ -6,13 +6,13 @@
     <data>
         <variable
             name="submiss"
-            type="com.example.todoapp.view.fragment.SubmissionFragment" />
+            type="com.example.todoapp.submission.SubmissionFragment" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.fragment.SubmissionFragment">
+        tools:context=".submission.SubmissionFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -34,20 +34,20 @@
             android:layout_marginTop="300dp">
 
             <Button
-                android:id="@+id/keepBtn"
+                android:id="@+id/discardBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:onClick="@{() -> submiss.discard()}"
-                android:text="Discard" />
+                android:text="@string/discard" />
 
             <Button
-                android:id="@+id/confirmBtn"
+                android:id="@+id/submitBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="@{() -> submiss.submit()}"
-                android:text="Confirm" />
+                android:text="@string/submit" />
         </LinearLayout>
     </FrameLayout>
 </layout>
