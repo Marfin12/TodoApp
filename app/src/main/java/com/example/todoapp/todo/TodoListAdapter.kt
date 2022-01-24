@@ -9,26 +9,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
 import com.example.todoapp.core.data.source.entity.TodoEntity
 
+/**
+ * Adapter for the task list. Has a reference to the [TodoListModel] to send actions back to it.
+ */
 open class TodoListAdapter(
     private val dataset: List<TodoEntity>
 ): RecyclerView.Adapter<TodoListAdapter.SubmissionViewHolder>() {
 
     var onItemClick: ((TodoEntity, Boolean) -> Unit)? = null
 
-    /**
-     * Create new views (invoked by the layout manager)
-     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubmissionViewHolder {
-        // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_todo, parent, false)
 
         return SubmissionViewHolder(adapterLayout)
     }
 
-    /**
-     * Replace the contents of a view (invoked by the layout manager)
-     */
     override fun onBindViewHolder(holder: SubmissionViewHolder, position: Int) {
         val item = dataset[position]
         holder.textView.text = item.todoName
@@ -55,8 +51,5 @@ open class TodoListAdapter(
         }
     }
 
-    /**
-     * Return the size of your dataset (invoked by the layout manager)
-     */
     override fun getItemCount() = dataset.size
 }

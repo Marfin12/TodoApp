@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
 import com.example.todoapp.core.model.Todo
 import com.example.todoapp.core.model.TodoList
+import com.example.todoapp.todo.TodoListModel
 
+/**
+ * Adapter for the submission list. Has a reference to the [SubmissionModel] to send actions back to it.
+ */
 open class SubmissionAdapter(
     private val dataset: ArrayList<Todo>
 ): RecyclerView.Adapter<SubmissionAdapter.SubmissionViewHolder>() {

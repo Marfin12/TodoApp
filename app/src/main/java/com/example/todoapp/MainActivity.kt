@@ -7,6 +7,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.todoapp.R
 
+/**
+ * Main activity for the todoapp. Holds the Navigation Host Fragment and the Drawer, Toolbar, etc.
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
@@ -16,9 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
-        // Instantiate the navController using the NavHostFragment
+
         navController = navHostFragment.navController
-        // Make sure actions in the ActionBar get propagated to the NavController
         setupActionBarWithNavController(navController)
     }
 

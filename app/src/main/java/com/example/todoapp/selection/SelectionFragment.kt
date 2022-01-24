@@ -11,6 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
 import com.example.todoapp.databinding.FragmentSelectionBinding
 
+/**
+ * Display a [Selection] screen. User can add todo item & remove from their addition action
+ */
 class SelectionFragment : Fragment() {
     private var _binding: FragmentSelectionBinding? = null
 

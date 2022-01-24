@@ -18,6 +18,9 @@ import com.example.todoapp.databinding.FragmentTodoBinding
 import com.example.todoapp.databinding.FragmentTodoEmptyBinding
 import com.example.todoapp.core.worker.TodoWorkerModel
 
+/**
+ * Display a grid of [Todo]s. User can choose to view all and tick which task is done.
+ */
 class TodoFragment : Fragment() {
     private var _fragmentTodoBinding: FragmentTodoBinding? = null
     private val fragmentTodoBinding get() = _fragmentTodoBinding!!

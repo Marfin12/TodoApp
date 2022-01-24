@@ -9,26 +9,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
 import com.example.todoapp.core.model.Todo
 import com.example.todoapp.core.model.TodoList
+import com.example.todoapp.submission.SubmissionModel
 
+/**
+ * Adapter for the todo list. Has a reference to the [SelectionModel] to send actions back to it.
+ */
 @Suppress("UNCHECKED_CAST")
 open class SelectionAdapter(
     private val dataset: ArrayList<Todo>
 ): RecyclerView.Adapter<SelectionAdapter.ItemViewHolder>() {
 
-    /**
-     * Create new views (invoked by the layout manager)
-     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_todo, parent, false)
 
         return ItemViewHolder(adapterLayout)
     }
 
-    /**
-     * Replace the contents of a view (invoked by the layout manager)
-     */
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
 
@@ -48,9 +45,6 @@ open class SelectionAdapter(
         }
     }
 
-    /**
-     * Return the size of your dataset (invoked by the layout manager)
-     */
     override fun getItemCount() = dataset.size
 
     fun addTodoItem(todo: Todo) {

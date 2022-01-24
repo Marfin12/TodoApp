@@ -12,9 +12,12 @@ import com.example.todoapp.R
 import com.example.todoapp.TodoApplication
 import com.example.todoapp.databinding.FragmentSubmissionBinding
 
+/**
+ * Display a [Submission] screen. User can either discard or submit their todo item.
+ */
 class SubmissionFragment : Fragment() {
     private var _binding: FragmentSubmissionBinding? = null
-//
+
     private val binding get() = _binding!!
 
     private val viewListModel: SubmissionModel by activityViewModels {

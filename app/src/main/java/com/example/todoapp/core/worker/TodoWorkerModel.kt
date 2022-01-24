@@ -1,5 +1,6 @@
 package com.example.todoapp.core.worker
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -11,14 +12,13 @@ import com.example.todoapp.core.constants.TAG_OUTPUT
 import com.example.todoapp.core.data.source.entity.TodoEntity
 import java.util.concurrent.TimeUnit
 
+@SuppressLint("EnqueueWork")
 class TodoWorkerModel(application: Application) : AndroidViewModel(application) {
     private val outputWorkInfos: LiveData<List<WorkInfo>>
     private val workManager = WorkManager.getInstance(application)
     private var continuation: WorkContinuation
 
     init {
-        // This transformation makes sure that whenever the current work Id changes the WorkInfo
-        // the UI is listening to changes
         outputWorkInfos = workManager.getWorkInfosByTagLiveData(TAG_OUTPUT)
         continuation = workManager
             .beginUniqueWork(
@@ -60,7 +60,7 @@ class TodoWorkerModel(application: Application) : AndroidViewModel(application) 
         deleteBuilder.setInitialDelay(5, TimeUnit.SECONDS)
 
         continuation = continuation.then(deleteBuilder.build())
-            // Actually start the work
+
         continuation.enqueue()
     }
 
