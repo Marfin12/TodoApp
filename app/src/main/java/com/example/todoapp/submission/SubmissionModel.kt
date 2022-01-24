@@ -10,6 +10,8 @@ import kotlinx.coroutines.launch
 
 /**
  * ViewModel for the submission list screen.
+ *
+ * @param action Can be [any(TodoDao::class.java)]
  */
 class SubmissionModel(private val todoDAO: TodoDAO) : ViewModel() {
     private val submissionAdapter: SubmissionAdapter = SubmissionAdapter(ArrayList())
@@ -17,7 +19,7 @@ class SubmissionModel(private val todoDAO: TodoDAO) : ViewModel() {
     /**
      * Store & save todo item in device database
      *
-     * @param todos Can be [listOf(TodoList(id = 1, todoName = "item 1")],
+     * @param todos Can be [listOf(TodoList())],
      * @param action Can be [anyUnit]
      */
     fun submitItem(todos: TodoList, action: () -> Unit) {
@@ -60,9 +62,7 @@ class SubmissionModel(private val todoDAO: TodoDAO) : ViewModel() {
     }
 
     /**
-     * Get all todo item list for storing into android device
-     *
-     * @return [TodoList] - list of submitted todo item
+     * Clear all todo item list stored in adapter cache
      */
     fun clearTodoList() {
         submissionAdapter.clearTodoList()
