@@ -24,7 +24,8 @@ import java.lang.reflect.Field
 import java.lang.reflect.Modifier
 
 class UtilsUnitTest {
-    private val FAKE_STRING = "FAKE"
+    private val FAKE_TITLE = "FAKE"
+    private val FAKE_MESSAGE = "MESSAGE"
 
     @Mock
     private lateinit var mockContext: Context
@@ -72,7 +73,7 @@ class UtilsUnitTest {
         every { PendingIntent.getActivity(mockContext, any(), mockIntent, any()) } returns mockPendingIntent
         setFinalStatic(VERSION::class.java.getField("SDK_INT"), 29)
         `when`(mockContext.getSystemService(Context.NOTIFICATION_SERVICE)).thenReturn(mockNotificationManager)
-        makeStatusNotification(FAKE_STRING, mockContext)
+        makeStatusNotification(FAKE_TITLE, FAKE_MESSAGE, mockContext)
         verify(mockNotificationManagerCompat, times(1))
             .notify(NOTIFICATION_ID, mockNotification)
         verify(mockNotificationManager, times(1))
