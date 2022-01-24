@@ -35,6 +35,7 @@ class SubmissionModel(private val todoDAO: TodoDAO) : ViewModel() {
      * @param todoList Can be [listOf(TodoList(id = 1, todoName = "item 1")],
      */
     fun addTodoItem(todoList: TodoList) {
+        println(todoList)
         todoList.todoList.forEach { todo ->
             submissionAdapter.addTodoItem(todo)
         }
@@ -58,11 +59,20 @@ class SubmissionModel(private val todoDAO: TodoDAO) : ViewModel() {
         return submissionAdapter.getTodoList()
     }
 
+    /**
+     * Get all todo item list for storing into android device
+     *
+     * @return [TodoList] - list of submitted todo item
+     */
+    fun clearTodoList() {
+        submissionAdapter.clearTodoList()
+    }
+
     class SubmissionViewModelFactory(private val todoDAO: TodoDAO) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(SubmissionModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return TodoListModel(todoDAO) as T
+                return SubmissionModel(todoDAO) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

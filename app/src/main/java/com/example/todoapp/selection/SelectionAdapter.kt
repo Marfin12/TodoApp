@@ -18,6 +18,7 @@ import com.example.todoapp.submission.SubmissionModel
 open class SelectionAdapter(
     private val dataset: ArrayList<Todo>
 ): RecyclerView.Adapter<SelectionAdapter.ItemViewHolder>() {
+    var onItemClick: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
@@ -40,6 +41,7 @@ open class SelectionAdapter(
         init {
             imageView.setOnClickListener {
                 dataset.removeAt(adapterPosition)
+                onItemClick?.invoke(adapterPosition)
                 notifyDataSetChanged()
             }
         }

@@ -49,6 +49,10 @@ open class SubmissionAdapter(
         return TodoList(dataset)
     }
 
+    fun clearTodoList() {
+        dataset.clear()
+    }
+
     /**
      * Return the size of your dataset (invoked by the layout manager)
      */

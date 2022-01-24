@@ -60,6 +60,7 @@ class SubmissionFragment : Fragment() {
 
     fun discard() {
         val action = SubmissionFragmentDirections.actionSubmissionFragmentToTodoFragment()
+        viewListModel.clearTodoList()
         findNavController().navigate(action)
     }
 
