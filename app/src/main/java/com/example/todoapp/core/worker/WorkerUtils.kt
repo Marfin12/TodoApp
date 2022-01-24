@@ -30,7 +30,7 @@ class HandleNullableWorkerUtilsException {
     }
 }
 
-fun makeStatusNotification(message: String, context: Context) {
+fun makeStatusNotification(title: String, message: String, context: Context) {
     var intent: Intent?
     var notification: Notification?
     var channel: NotificationChannel?
@@ -62,7 +62,7 @@ fun makeStatusNotification(message: String, context: Context) {
     notification = try {
         NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle(NOTIFICATION_TITLE)
+            .setContentTitle(title)
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)

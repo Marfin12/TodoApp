@@ -5,6 +5,7 @@ import android.content.Context.MODE_APPEND
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import com.example.todoapp.R
 import com.example.todoapp.core.constants.FILE_NAME_TODO
 import com.example.todoapp.core.constants.KEY_TODO_ID
 import com.example.todoapp.core.constants.KEY_TODO_NAME
@@ -25,7 +26,11 @@ class RemoveTodoWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker
         val resourceTodoName = inputData.getString(KEY_TODO_NAME)
         val fos: FileOutputStream = appContext.openFileOutput(FILE_NAME_TODO, MODE_APPEND)
 
-        makeStatusNotification(resourceTodoName.toString(), appContext)
+        makeStatusNotification(
+            appContext.getString(R.string.remove_todo_worker),
+            resourceTodoName.toString(),
+            appContext
+        )
         sleep()
 
         return try {
