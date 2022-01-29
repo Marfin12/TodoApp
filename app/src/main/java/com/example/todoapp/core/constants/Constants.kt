@@ -4,7 +4,6 @@ package com.example.todoapp.core.constants
     "Verbose WorkManager Notifications"
 const val VERBOSE_NOTIFICATION_CHANNEL_DESCRIPTION =
     "Shows notifications whenever work starts"
-const val WORKER_REQUEST_TITLE = "WorkRequest Starting"
 const val CHANNEL_ID = "VERBOSE_NOTIFICATION"
 const val NOTIFICATION_ID = 1
 

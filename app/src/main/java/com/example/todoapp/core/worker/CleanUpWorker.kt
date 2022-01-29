@@ -7,7 +7,6 @@ import androidx.work.WorkerParameters
 import com.example.todoapp.R
 import com.example.todoapp.core.constants.TAG_CLEAN_UP_WORKER
 import com.example.todoapp.core.constants.TAG_TODO_WORKER
-import com.example.todoapp.core.constants.WORKER_REQUEST_TITLE
 
 class CleanupWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
     override fun doWork(): Result {
