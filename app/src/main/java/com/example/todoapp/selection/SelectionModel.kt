@@ -45,7 +45,6 @@ class SelectionModel : ViewModel() {
      * @return [TodoList] - list of commited todo item
      */
     fun getTodoList(): TodoList {
-        println(selectionAdapter.getTodoList())
         return selectionAdapter.getTodoList()
     }
 }

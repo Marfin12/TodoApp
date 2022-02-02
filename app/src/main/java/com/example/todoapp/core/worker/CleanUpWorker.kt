@@ -30,7 +30,9 @@ class CleanupWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params
             }
             Result.success()
         } catch (exception: Exception) {
-            Log.e(TAG_TODO_WORKER, exception.message!!)
+            if (exception.message !== null) {
+                Log.e(TAG_CLEAN_UP_WORKER, exception.message!!)
+            }
             Result.failure()
         }
     }

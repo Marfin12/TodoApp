@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.todoapp.R
 import com.example.todoapp.core.constants.*
+import com.example.todoapp.core.data.source.room.TodoDatabase
 import com.example.todoapp.todo.TodoFragment
 import java.io.File
 import java.io.FileNotFoundException
@@ -27,6 +28,7 @@ class HandleNullableWorkerUtilsException {
         var intent: Intent? = null
         var notification: Notification? = null
         var notificationChannel: NotificationChannel? = null
+        var database: TodoDatabase? = null
     }
 }
 

@@ -8,7 +8,7 @@ import com.example.todoapp.core.data.source.entity.TodoEntity
 /**
  * ViewModel for the todo list screen.
  */
-class TodoListModel(private val todoDAO: TodoDAO) : ViewModel() {
+class TodoListModel(todoDAO: TodoDAO) : ViewModel() {
     val allTodoEntity: LiveData<List<TodoEntity>> = todoDAO.getTodoList().asLiveData()
     private var todoListAdapter: TodoListAdapter = TodoListAdapter(listOf())
 

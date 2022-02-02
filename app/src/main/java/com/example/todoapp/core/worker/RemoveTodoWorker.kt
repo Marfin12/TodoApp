@@ -17,25 +17,22 @@ import java.io.IOException
 
 class RemoveTodoWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx, params) {
 
-    val context = ctx
-
     override suspend fun doWork(): Result {
 
-        val appContext = applicationContext
         val resourceTodoId = inputData.getInt(KEY_TODO_ID, -1)
         val resourceTodoName = inputData.getString(KEY_TODO_NAME)
-        val fos: FileOutputStream = appContext.openFileOutput(FILE_NAME_TODO, MODE_APPEND)
+        val fos: FileOutputStream = applicationContext.openFileOutput(FILE_NAME_TODO, MODE_APPEND)
 
         makeStatusNotification(
-            appContext.getString(R.string.remove_todo_worker),
+            applicationContext.getString(R.string.remove_todo_worker),
             resourceTodoName.toString(),
-            appContext
+            applicationContext
         )
         sleep()
 
         return try {
             resourceTodoName?.let { TodoEntity(id = resourceTodoId, todoName = it) }?.let {
-                TodoDatabase.getDatabase(context).todoDao().delete(
+                TodoDatabase.getDatabase(applicationContext).todoDao().delete(
                     it
                 )
             }

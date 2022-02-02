@@ -45,13 +45,13 @@ class TodoWorkerModel(application: Application) : AndroidViewModel(application) 
      * @param blurLevel The amount to blur the image
      */
     internal fun applyTodoChecked(todoItem: TodoEntity) {
-        val workerBuilder = OneTimeWorkRequestBuilder<TodoWorker>()
+        val workerBuilder = OneTimeWorkRequestBuilder<SaveCacheTodoWorker>()
             .addTag(todoItem.todoName)
 
         workerBuilder.setInputData(createInputDataForUri(todoItem.id, todoItem.todoName))
         workerBuilder.setInitialDelay(5, TimeUnit.SECONDS)
 
-        continuation = continuation.then(workerBuilder.build())
+//        continuation = continuation.then(workerBuilder.build())
 
         val deleteBuilder = OneTimeWorkRequestBuilder<RemoveTodoWorker>()
             .addTag(todoItem.todoName)

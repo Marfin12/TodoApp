@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Build.VERSION
 import android.util.Log
 import androidx.core.app.NotificationManagerCompat
@@ -68,16 +69,29 @@ class UtilsUnitTest {
     }
 
     @Test
-    fun test_notification() {
+    fun test_notification_SDK_Version_Above_26() {
         every { NotificationManagerCompat.from(mockContext) } returns mockNotificationManagerCompat
         every { PendingIntent.getActivity(mockContext, any(), mockIntent, any()) } returns mockPendingIntent
         setFinalStatic(VERSION::class.java.getField("SDK_INT"), 29)
         `when`(mockContext.getSystemService(Context.NOTIFICATION_SERVICE)).thenReturn(mockNotificationManager)
         makeStatusNotification(FAKE_TITLE, FAKE_MESSAGE, mockContext)
-        verify(mockNotificationManagerCompat, times(1))
-            .notify(NOTIFICATION_ID, mockNotification)
         verify(mockNotificationManager, times(1))
             .createNotificationChannel(mockNotificationChannel)
+        verify(mockNotificationManagerCompat, times(1))
+            .notify(NOTIFICATION_ID, mockNotification)
+    }
+
+    @Test
+    fun test_notification_SDK_Version_Below_26() {
+        every { NotificationManagerCompat.from(mockContext) } returns mockNotificationManagerCompat
+        every { PendingIntent.getActivity(mockContext, any(), mockIntent, any()) } returns mockPendingIntent
+        setFinalStatic(VERSION::class.java.getField("SDK_INT"), 25)
+        `when`(mockContext.getSystemService(Context.NOTIFICATION_SERVICE)).thenReturn(mockNotificationManager)
+        makeStatusNotification(FAKE_TITLE, FAKE_MESSAGE, mockContext)
+        verify(mockNotificationManager, never())
+            .createNotificationChannel(mockNotificationChannel)
+        verify(mockNotificationManagerCompat, times(1))
+            .notify(NOTIFICATION_ID, mockNotification)
     }
 
     @Throws(Exception::class)

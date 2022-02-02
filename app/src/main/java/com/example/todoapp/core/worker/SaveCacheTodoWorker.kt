@@ -13,7 +13,7 @@ import com.example.todoapp.core.constants.TAG_TODO_WORKER
 import java.io.FileOutputStream
 import java.io.IOException
 
-class TodoWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
+class SaveCacheTodoWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
     override fun doWork(): Result {
         val appContext = applicationContext
         val resourceUri = inputData.getString(KEY_TODO_NAME)
